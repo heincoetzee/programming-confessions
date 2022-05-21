@@ -1,0 +1,23 @@
+/* Bold font face */
+@font-face {
+    font-family: source-sans-pro;
+    font-weight: 600;
+    font-style: normal;
+    src: url("../fonts/sources-sans-pro-bold.woff2") format("woff2");
+}
+
+/* Normal font face */
+@font-face {
+    font-family: source-sans-pro;
+    font-weight: 400;
+    font-style: normal;
+    src: url("../fonts/source-sans-pro-regular.woff2") format("woff2");
+}
+
+/* Light font face */
+@font-face {
+    font-family: source-sans-pro;
+    font-weight: 300;
+    font-style: normal;
+    src: url("../fonts/source-sans-pro-light.woff2") format("woff2");
+}

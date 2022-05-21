@@ -25,8 +25,9 @@
 <body>
   <!--  Header -->
   <header>
-    <h1>Programming Confessions</h1>
-    <?php
-      require_once "headers/header{$header_type}.php";
-    ?>
+    <div>
+      <a href="<?php echo "$dir/" ?>"><h1>Programming Confessions</h1></a>
+      <?php
+        require_once "headers/header{$header_type}.php";
+      ?>
   </header>

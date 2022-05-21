@@ -6,6 +6,8 @@ $stylesheet = "login.css";
 $scripts = array();
 $modules = array();
 $header_type = 1;
+$login_location = "./";
+$signup_location = "./signup";
 
 // Main config
 $submit_to = "#";

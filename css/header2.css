@@ -1,0 +1,73 @@
+/* Svg styles */
+img {
+  transition: opacity 0.2s ease-out;
+}
+img:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.filter-black {
+  /* Filter svg colour to #121212 */
+  filter: invert(0%) sepia(1%) saturate(2679%) hue-rotate(316deg) brightness(105%) contrast(86%);
+}
+.filter-white {
+  /* Filter svg colour to #fff */
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(103%) contrast(101%);
+}
+
+/* Search bar Styles */
+header > div {
+  display: flex;
+  flex-flow: row nowrap;
+  column-gap: 40px;
+  align-items: center;
+}
+#searchbar-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  column-gap: 10px;
+  background: var(--white);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+input {
+  font-size: 16px;
+  padding: 0;
+}
+
+/* User Styles */
+#user-toggle {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  column-gap: 10px;
+  margin-right: 50px;
+  position: relative;
+}
+#user-menu {
+  position: absolute;
+  padding: 2px 0;
+  top: 70px;
+  right: 55px;
+  border: 1px solid var(--dark-gray-1);
+  border-radius: 5px;
+  color: var(--black);
+  background: var(--white);
+  width: 140px;
+}
+#user-menu li {
+  transition: opacity 0.5s ease-out;
+}
+#user-menu li:first-child {
+  border-bottom: 1px solid var(--light-gray-2);
+}
+#user-menu a{
+  display: inline-block;
+  padding: 10px;
+  color: inherit;
+  text-align: center;
+}
+#user-menu a:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,99 @@
+@import url("fonts.css");
+
+/* Global Styles */
+:root {
+  --black: #121212;
+  --dark-gray-1: #181818;
+  --dark-gray-2: #282828;
+  --light-gray-1: #404040;
+  --light-gray-2: #b3b3b3;
+  --white: #fff;
+  --accent: #0f52ba;
+}
+html {
+  box-sizing: border-box;
+}
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+body {
+  color: var(--white);
+  background: var(--dark-gray-1);
+  font: 400 16px/1.5 source-sans-pro, sans-serif;
+  margin: 0;
+}
+h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 30px;
+}
+h2 {
+  margin: 0;
+  font-size: 28px;
+  text-align: center;
+}
+h3 {
+  margin: 0;
+  font-size: 21.5px;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+}
+input {
+  border: none;
+  outline: none;
+  font-size: 17px;
+  font-family: inherit;
+}
+ul, ol {
+  list-style: none;
+  margin: 0;
+}
+
+/* Header Styles */
+header {
+  height: 12vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  background: var(--black);
+}
+ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+ul li:last-child {
+  margin-right: 30px;
+}
+
+/* Main Styles */
+main {
+  max-width: 600px;
+  height: 88vh;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+/* Button Styles */
+.button {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: opacity 0.2s ease-out;
+  color: var(--white);
+  background: var(--accent);
+}
+.button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* Other Styles */
+.hidden {
+  display: none;
+}
