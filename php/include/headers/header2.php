@@ -16,7 +16,7 @@
     <img src="<?php echo "$dir/images/dropdown.svg" ?>" width="19" height="19" class="filter-white">
   </div>
 
-  <ol id="user-menu" class="">
+  <ol id="user-menu" class="hidden">
     <li>
       <a href="">Confess</a>
     </li>

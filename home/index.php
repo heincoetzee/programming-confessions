@@ -6,7 +6,7 @@ $page_title = "Home";
 $dir = "..";
 $stylesheet = "home.css";
 $scripts = array();
-$modules = array();
+$modules = array("toggle.js");
 $header_type = 2;
 
 // Main config
