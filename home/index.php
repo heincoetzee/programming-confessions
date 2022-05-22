@@ -5,7 +5,7 @@ require_once "../php/login-checker.php";
 $page_title = "Home";
 $dir = "..";
 $stylesheet = "home.css";
-$scripts = array();
+$scripts = array("sign-out.js");
 $modules = array("toggle.js");
 $header_type = 2;
 

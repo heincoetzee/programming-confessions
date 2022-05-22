@@ -29,7 +29,11 @@
       <?php
         $location;
         if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-          $location = "./";
+          if ($page_title === "Profile") {
+            $location = "../home";
+          } else {
+            $location = "./";
+          }
         } else {
           $location = "$dir/";
         }

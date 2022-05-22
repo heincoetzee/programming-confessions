@@ -56,9 +56,6 @@ input {
   background: var(--white);
   width: 140px;
 }
-#user-menu li {
-  transition: opacity 0.5s ease-out;
-}
 #user-menu li:first-child {
   border-bottom: 1px solid var(--light-gray-2);
 }
@@ -67,6 +64,7 @@ input {
   padding: 10px;
   color: inherit;
   text-align: center;
+  cursor: pointer;
 }
 #user-menu a:hover {
   opacity: 0.8;

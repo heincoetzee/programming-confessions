@@ -24,7 +24,7 @@
       <a href="<?php echo "$dir/profile" ?>">Profile</a>
     </li>
     <li>
-      <a href="">Sign out</a>
+      <a id="sign-out">Sign out</a>
     </li>
   </ol>
 </div>
