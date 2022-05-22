@@ -5,8 +5,16 @@
   <?php
   foreach ($fields as $field => $type) {
     $content = ucwords($field);
+    if (strpos($content, "repeat") !== false) {
+      echo <<<_LABEL
+        <label for="$field">Password Repeat</label>
+      _LABEL;
+    } else {
+      echo <<<_LABEL
+        <label for="$field">$content</label>
+      _LABEL;
+    }
     echo <<<_INPUT
-      <label for="$field">$content</label>
       <input type="$type" name="$field" id=$field">
     _INPUT;
   }

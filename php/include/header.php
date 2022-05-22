@@ -17,7 +17,7 @@
 
     // output modules to load
     foreach ($modules as $module) {
-      echo "<script type='module' defer src='$dir/css/$module'></script>";
+      echo "<script type='module' defer src='$dir/js/$module'></script>";
     }
   ?>
 
