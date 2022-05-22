@@ -26,8 +26,17 @@
   <!--  Header -->
   <header>
     <div>
-      <a href="<?php echo "$dir/" ?>"><h1>Programming Confessions</h1></a>
       <?php
+        $location;
+        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
+          $location = "./";
+        } else {
+          $location = "$dir/";
+        }
+        echo <<<_HOMEPAGE
+          <a href="$location"><h1>Programming Confessions</h1></a>
+        _HOMEPAGE;
+
         require_once "headers/header{$header_type}.php";
       ?>
   </header>

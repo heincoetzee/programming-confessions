@@ -243,8 +243,7 @@ export default class SignUpForm {
     }
 
     #processRequest(url) {
-        this.#sendRequest(url).then(success => {
-            console.log(success);
+        this.#sendRequest(url).then(() => {
             this.#reset();
         }).catch(error => {
             console.log(error);

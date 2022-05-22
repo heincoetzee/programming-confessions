@@ -1,4 +1,6 @@
 <?php
+require_once "../php/login-checker.php";
+
 // Header config
 $page_title = "Profile";
 $dir = "..";

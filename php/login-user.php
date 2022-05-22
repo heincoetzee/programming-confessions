@@ -10,5 +10,5 @@ if ($_POST) {
     $connection = $database->getConnection();
     $user = new User($username, $password, $connection);
 
-    $user->create();
+    $user->login();
 }

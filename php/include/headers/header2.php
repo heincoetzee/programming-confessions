@@ -8,7 +8,11 @@
 <!-- User options -->
 <div id="user">
   <div id="user-toggle">
-    <h3>Username</h3>
+    <?php
+      $username = $_SESSION["username"];
+
+      echo "<h3>$username</h3>";
+    ?>
     <img src="<?php echo "$dir/images/dropdown.svg" ?>" width="19" height="19" class="filter-white">
   </div>
 

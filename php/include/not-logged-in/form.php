@@ -1,5 +1,5 @@
 
-<form action="<?php echo $submit_to ?>" method="POST">
+<form action="<?php echo "$dir/php/$submit_to" ?>" method="POST">
   <h2><?php echo $page_title ?></h2>
 
   <?php
