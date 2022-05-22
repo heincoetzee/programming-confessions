@@ -7,5 +7,5 @@ form.addEventListener("submit", event => {
     const location = form.getAttribute("action");
     event.preventDefault();
 
-    signUpForm.submit(location);
+    signUpForm.submit(`../php/${location}`);
 });

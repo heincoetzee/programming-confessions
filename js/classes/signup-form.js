@@ -111,7 +111,7 @@ export default class SignUpForm {
         const password = this.password;
         const length = password.length;
         const isEmpty = this.#isEmpty(password);
-        const validLength = length >= 8;
+        const validLength = (length >= 8) && (length <= 16);
 
         const numUpperCaseLetters = this.#count(password, this.upperCaseLetters);
         const numLowerCaseLetters = this.#count(password, this.lowerCaseLetters);
@@ -168,7 +168,8 @@ export default class SignUpForm {
         const [passwordNotEmpty, passwordLengthValid, validUpperCaseLetters,
         validLowerCaseLetters, validDigits, validSpecialChars] = this.#validPassword(1);
 
-        const passwordLengthErrorMessage = `Please provide at least 8 characters`;
+        const passwordLengthErrorMessage = `Please provide at least 8 and at most
+            16 characters`;
         const upperCaseLettersErrorMessage = `Please provide at least 1 uppercase letters`;
         const lowerCaseLettersErrorMessage = `Please provide at lease 3 lowercase letters`;
         const digitsErrorMessage = `Please provide at least 1 digit`;
@@ -231,7 +232,7 @@ export default class SignUpForm {
     }
     async #sendRequest(url) {
         const response = await fetch(url, {
-            method: POST,
+            method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
@@ -244,9 +245,10 @@ export default class SignUpForm {
     #processRequest(url) {
         this.#sendRequest(url).then(success => {
             console.log(success);
+            this.#reset();
         }).catch(error => {
             console.log(error);
-        })
+        });
     }
 
     submit(url) {
@@ -254,9 +256,7 @@ export default class SignUpForm {
             this.#removeErrorMessages();
             this.#validateFields();
         } else {
-            console.log("All is valid");
-            // this.#processRequest(url);
-            // this.#reset();
+            this.#processRequest(url);
         }
     }
 
