@@ -18,7 +18,7 @@
 
   <ol id="user-menu" class="hidden">
     <li>
-      <a href="">Confess</a>
+      <a href="<?php echo "$dir/new" ?>">Confess</a>
     </li>
     <li>
       <a href="<?php echo "$dir/profile" ?>">Profile</a>

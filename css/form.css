@@ -16,9 +16,15 @@ label {
   font-size: 17px;
   margin-bottom: 7px;
 }
-input {
+textarea, input {
   padding: 8px 10px;
   margin-bottom: 20px;
+}
+textarea {
+  font: inherit;
+  border: none;
+  outline: none;
+  resize: none;
 }
 
 button[type=submit] {

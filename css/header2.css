@@ -31,6 +31,10 @@ header > div {
   padding: 5px 10px;
   border-radius: 5px;
 }
+#search-input {
+  margin-bottom: 0;
+  padding: 0;
+}
 input {
   font-size: 16px;
   padding: 0;
