@@ -113,10 +113,6 @@ export default class ConfessionForm {
         // Move user to the Home page
         window.location.href = "../home";
     }
-    async #getUserName() {
-        const response = await fetch("../php/get-username.php");
-        return response.text();
-    }
     #getQueryString() {
         const inputElements = this.inputElements;
 
@@ -126,20 +122,20 @@ export default class ConfessionForm {
         }
         return queryString.slice(0, queryString.length - 1);
     }
-    async #sendRequest(url, queryString) {
+    async #sendRequest(url) {
         const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body : queryString
+            body : this.#getQueryString()
         });
 
         return response.text();
     }
 
-    #processRequest(url, queryString) {
-        this.#sendRequest(url, queryString).then(message => {
+    #processRequest(url) {
+        this.#sendRequest(url).then(message => {
             if (!this.#isEmpty(message)) {
                 console.log(message);
             }
@@ -155,11 +151,7 @@ export default class ConfessionForm {
             this.#validateFields();
         } else {
             this.#removeErrorMessages();
-            this.#getUserName().then(username => {
-                let queryString = `${this.#getQueryString()}&username=${encodeURIComponent(username)}`;
-
-                this.#processRequest(url, queryString);
-            })
+            this.#processRequest(url);
         }
     }
 

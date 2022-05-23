@@ -19,6 +19,7 @@ label {
 textarea, input {
   padding: 8px 10px;
   margin-bottom: 20px;
+  border-radius: 3px;
 }
 textarea {
   font: inherit;

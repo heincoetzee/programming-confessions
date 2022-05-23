@@ -1,3 +1,5 @@
+"use strict";
+
 import ConfessionForm from "./classes/confession-form.js";
 
 const form = document.querySelector("form");

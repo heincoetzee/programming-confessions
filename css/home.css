@@ -7,15 +7,19 @@
 }
 
 /* Main Styles */
+body {
+  overflow: scroll;
+}
 main {
   max-width: 100%;
   margin: 0;
   padding: 35px 15px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
   align-items: flex-start;
+  column-gap: 3%;
   row-gap: 30px;
+  height: auto;
 }
 
 /* Confession Card Styles */
