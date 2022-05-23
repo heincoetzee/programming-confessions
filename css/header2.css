@@ -31,6 +31,9 @@ header > div {
   padding: 5px 10px;
   border-radius: 5px;
 }
+#searchbar-wrapper.hidden {
+  display: none;
+}
 #search-input {
   margin-bottom: 0;
   padding: 0;

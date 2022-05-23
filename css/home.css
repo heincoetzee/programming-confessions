@@ -7,9 +7,6 @@
 }
 
 /* Main Styles */
-body {
-  overflow: scroll;
-}
 main {
   max-width: 100%;
   margin: 0;

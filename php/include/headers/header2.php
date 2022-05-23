@@ -1,6 +1,6 @@
 <!-- Search Bar-->
-  <div id="searchbar-wrapper">
-    <input type="text" id="search-input" placeholder="Search...">
+  <div id="searchbar-wrapper" class="<?php $page_title === "Confess" ? print "hidden" : print "" ?>">
+    <input type="text" id="search-input" placeholder="Search by title">
     <img src="<?php echo "$dir/images/search.svg" ?>" width="18" height="18" class="filter">
   </div>
 </div>
