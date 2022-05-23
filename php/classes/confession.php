@@ -1,4 +1,7 @@
 <?php
+require_once "user.php";
+require_once "like.php";
+
 class Confession {
     private $title;
     private $body;
@@ -10,29 +13,13 @@ class Confession {
         $this->connection = $connection;
     }
 
-    private function getUserId() {
-        session_start();
-        $username = $_SESSION["username"];
-        
-        $query = "SELECT user_id FROM users WHERE username=?";
-
-        $statement = $this->connection->prepare($query);
-
-        $statement->bindParam(1, $username, PDO::PARAM_STR, 10);
-
-        if (!$statement->execute()) {
-            die("Error: User id not found");
-        }
-
-        return ($statement->fetch())->user_id;
-    }
 
     public function create() {
         $query = "INSERT INTO confessions(title, body, user_id) VALUES(?, ?, ?)";
 
         $statement = $this->connection->prepare($query);
 
-        $user_id = $this->getUserId();
+        $user_id = User::getUserId($this->connection);
         $statement->bindParam(1, $this->title, PDO::PARAM_STR, 20);
         $statement->bindParam(2, $this->body, PDO::PARAM_STR, 120);
         $statement->bindParam(3, $user_id, PDO::PARAM_INT);
@@ -68,7 +55,11 @@ class Confession {
             die("Error: Like not found");
         }
 
-        return (bool)(int)($statement->fetch())->liked;
+        if ($statement->rowCount() === 0) {
+            return false;
+        }
+
+        return (bool) (int) ($statement->fetch())->liked;
     }
 
     private static function getNumLikes($confession_id, $connection) {
@@ -86,7 +77,6 @@ class Confession {
         return ($statement->fetch())->num_likes;
     }
 
-
     public static function getAllConfessions($connection) {
         $query = "SELECT confession_id, title, body, date_created, user_id FROM 
             confessions ORDER BY date_created DESC";
@@ -94,6 +84,7 @@ class Confession {
         $result = $connection->query($query);
 
         $confessions = $result->fetchAll();
+        $user_id = User::getUserId($connection);
         foreach ($confessions as $confession) {
             // convert the current timestamp from "YYYY-MM-DD HH:MM:SS" to
             // "dd mmm"
@@ -106,8 +97,8 @@ class Confession {
                 $connection);
 
             // Indicate if the user liked the confession
-            $confession->{"isLikedByUser"} = Confession::isConfessionLiked($confession->user_id,
-                $confession->confession_id, $connection);
+            $isLiked = Confession::isConfessionLiked($user_id, $confession->confession_id, $connection);
+            $confession->{"isLikedByUser"} =  $isLiked;
 
             // Add the number of the likes that the post has
             $confession->{"numLikes"} = Confession::getNumLikes($confession->confession_id, 
@@ -115,7 +106,6 @@ class Confession {
 
             // Lastly remove the user_id
             unset($confession->user_id);
-
         }
 
         echo json_encode($confessions);

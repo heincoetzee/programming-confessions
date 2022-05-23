@@ -51,4 +51,21 @@ class User {
         }
     }
 
+    public static function getUserId($connection) {
+        session_start();
+        $username = $_SESSION["username"];
+        
+        $query = "SELECT user_id FROM users WHERE username=?";
+
+        $statement = $connection->prepare($query);
+
+        $statement->bindParam(1, $username, PDO::PARAM_STR, 10);
+
+        if (!$statement->execute()) {
+            die("Error: User id not found");
+        }
+
+        return ($statement->fetch())->user_id;
+    }
+
 }
