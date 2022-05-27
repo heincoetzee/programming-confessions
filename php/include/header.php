@@ -44,3 +44,4 @@
         require_once "headers/header{$header_type}.php";
       ?>
   </header>
+  <main>

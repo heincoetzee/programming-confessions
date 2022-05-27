@@ -16,9 +16,7 @@ $fields = array(
   "password" => "password",
   "password-repeat" => "password"
 );
-$main_dir = "not-logged-in";
-$main_file = "form.php";
 
 require_once "$dir/php/include/header.php";
-require_once "$dir/php/include/main.php";
+require_once "$dir/php/include/not-logged-in/form.php";
 require_once "$dir/php/include/footer.php";
