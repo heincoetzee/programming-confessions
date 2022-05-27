@@ -10,8 +10,8 @@ $modules = array("toggle.js", "confession.js");
 $header_type = 2;
 
 // Main config
-$submit_to = "create-confession.php";
-$confession_type = "New";
+$submit_to = "update-confession.php";
+$confession_type = "Edit";
 
 require_once "$dir/php/include/header.php";
 require_once "$dir/php/include/logged-in/confession.php";

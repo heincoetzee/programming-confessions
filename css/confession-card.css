@@ -1,0 +1,28 @@
+/* svg styles */
+.filter-blue {
+  filter: invert(22%) sepia(96%) saturate(1667%) hue-rotate(205deg) brightness(93%) contrast(100%);
+}
+
+/* Confession Card Styles */
+.confession-card {
+  flex: 0 0 22%; 
+  padding: 10px 16px;
+  border: 1px solid var(--light-gray-1);
+}
+.confession-card > p:first-of-type {
+  margin: 0;
+  font-size: 14px;
+  color: var(--light-gray-2);
+}
+.confession-card p {
+  margin: 12px 0;
+}
+.like-counter {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  column-gap: 5px;
+}
+.like-counter p {
+  margin: 0;
+}

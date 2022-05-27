@@ -24,8 +24,6 @@ class Like {
             print_r($statement->errorInfo());
         }
 
-        print_r($statement->fetchAll());
-
         return $statement->rowCount() === 1;
     }
     

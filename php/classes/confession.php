@@ -77,14 +77,7 @@ class Confession {
         return ($statement->fetch())->num_likes;
     }
 
-    public static function getAllConfessions($connection) {
-        $query = "SELECT confession_id, title, body, date_created, user_id FROM 
-            confessions ORDER BY date_created DESC";
-
-        $result = $connection->query($query);
-
-        $confessions = $result->fetchAll();
-        $user_id = User::getUserId($connection);
+    private static function addConfessionsProperties($confessions, $user_id, $connection) {
         foreach ($confessions as $confession) {
             // convert the current timestamp from "YYYY-MM-DD HH:MM:SS" to
             // "dd mmm"
@@ -107,6 +100,37 @@ class Confession {
             // Lastly remove the user_id
             unset($confession->user_id);
         }
+    }
+
+    public static function getUserConfessions($connection) {
+        $user_id = User::getUserId($connection);
+
+        $query = "SELECT confession_id, title, body, date_created, user_id FROM 
+            confessions WHERE user_id=? ORDER BY date_created DESC";
+
+        $statement = $connection->prepare($query);
+        $statement->bindParam(1, $user_id, PDO::PARAM_INT);
+        
+        if (!$statement->execute()) {
+            exit("Error: Could not get confessions for current user");
+        }
+
+        $user_confessions = $statement->fetchAll();
+        self::addConfessionsProperties($user_confessions, $user_id, $connection);
+
+        echo json_encode($user_confessions);
+    }
+
+    public static function getAllConfessions($connection) {
+        $user_id = User::getUserId($connection);
+
+        $query = "SELECT confession_id, title, body, date_created, user_id FROM 
+            confessions ORDER BY date_created DESC";
+
+        $result = $connection->query($query);
+
+        $confessions = $result->fetchAll();
+        self::addConfessionsProperties($confessions, $user_id, $connection);
 
         echo json_encode($confessions);
     }

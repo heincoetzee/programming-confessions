@@ -33,7 +33,7 @@ export default class LikeCounter {
     }
 
     #decrement() {
-        // REmove the blue colour from the icon
+        // Remove the blue colour from the icon
         this.#icon.classList.remove("filter-blue");
 
         // Decrement the counter;
@@ -51,7 +51,7 @@ export default class LikeCounter {
     }
 
     #getQueryString() {
-        return `liked=${Number(this.#isLiked())}&confession_id=${this.#container.parentNode.id}`;
+        return `liked=${Number(this.#isLiked())}&confession_id=${this.#container.id}`;
     }
 
     async #sendRequest() {
