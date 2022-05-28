@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="<?php echo "$dir/css/$stylesheet"?>">
+    <link rel="icon" type="image/x-icon" href="<?php echo "$dir/images/laptop.png" ?>">
 
   <?php
     // output scripts to load
