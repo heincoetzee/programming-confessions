@@ -13,6 +13,11 @@ class Confession {
         $this->connection = $connection;
     }
 
+    private static function getConfessionId() {
+        session_start();
+        return (int) htmlentities($_SESSION["confession_id"]);
+    }
+
     public function create() {
         $query = "INSERT INTO confessions(title, body, user_id) VALUES(?, ?, ?)";
 
@@ -152,8 +157,7 @@ class Confession {
     }
 
     public function updateConfession() {
-        session_start();
-        $confession_id = (int) htmlentities($_SESSION["confession_id"]);
+        $confession_id = self::getConfessionId();
         $title = $this->title;
         $body = $this->body;
 
@@ -165,7 +169,20 @@ class Confession {
         $statement->bindParam(3, $confession_id, PDO::PARAM_INT);
 
         if (!$statement->execute()) {
-            print_r($statement->errorInfo());
+            exit("Error: Could not update confession");
+        }
+    }
+
+    public static function deleteConfession($connection) {
+        $confession_id = self::getConfessionId();
+
+        $query = "DELETE FROM confessions WHERE confession_id=?";
+
+        $statement = $connection->prepare($query);
+        $statement->bindParam(1, $confession_id, PDO::PARAM_INT);
+
+        if (!$statement->execute()) {
+            exit("Error: Could not delete confession");
         }
     }
 

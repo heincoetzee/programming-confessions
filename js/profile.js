@@ -14,18 +14,42 @@ window.addEventListener("load", () => {
 main.addEventListener("click", event => {
     event.preventDefault();
     const target = event.target;
+    const targetText = target.textContent;
 
-    if (target.textContent === "Edit") {
-        const confession_id = target.parentNode.parentNode.previousElementSibling.id;
+    let confession_id;
+    if (targetText === "Edit") {
+        confession_id = target.parentNode.parentNode.previousElementSibling.id;
+    } else if (targetText === "Delete") {
+        confession_id = target.parentNode.previousElementSibling.id;
+    }
 
+    if ((targetText === "Edit") || (targetText === "Delete")) {
         fetch("../php/store-confession-id.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             body: `confession_id=${encodeURIComponent(confession_id)}`
-        }).then(() => window.location.href ="../edit");
+        }).then(() => {
+            if (targetText === "Edit") {
+                window.location.href ="../edit";
+            }
+        });
+    }
 
+    if (targetText === "Delete") {
+        const confessionCard = target.parentNode.parentNode.parentNode;
+        confessionCard.remove();
+
+        fetch("../php/delete-confession.php", {
+            method: "POST",
+        }).then(response => {
+            return response.text();
+        }) .then(message => {
+            if (message !== "") {
+                console.log(message);
+            }
+        });
     }
 
 
