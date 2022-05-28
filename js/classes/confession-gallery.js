@@ -13,7 +13,7 @@ export default class ConfessionGalley {
         this.#container.appendChild(element);
     }
 
-    #create(confession) {
+    #create(confession, removeButtons) {
         const card = this.#template.content.cloneNode(true);
         const section = card.children[0];
         const basicInfo = section.children;
@@ -31,7 +31,18 @@ export default class ConfessionGalley {
             likeIcon.classList.add("filter-blue");
         }
 
+        if (removeButtons) {
+            const buttons = section.querySelector(".update");
+            buttons.remove();
+        }
+
         this.#display(card);
+    }
+
+    removeAll() {
+        const cards = Array.from(this.#container.children);
+
+        cards.forEach(card => card.remove());
     }
 
     async #sendRequest(url) {
@@ -40,10 +51,10 @@ export default class ConfessionGalley {
         return response.json();
     }
 
-    displayAll(url) {
+    displayAll(url, removeButtons) {
         this.#sendRequest(url).then(confessions => {
             confessions.forEach(confession => {
-                this.#create(confession);
+                this.#create(confession, removeButtons);
             });
         });
     }

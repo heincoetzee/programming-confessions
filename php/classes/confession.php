@@ -139,6 +139,26 @@ class Confession {
         echo json_encode($confessions);
     }
 
+    public static function getLikedConfessions($connection) {
+        $user_id = User::getUserId($connection);
+
+        $query = "SELECT confession_id, title, body, date_created, user_id FROM 
+            confessions NATURAL JOIN likes WHERE user_id=? AND liked=1
+            ORDER BY date_created DESC";
+
+        $statement = $connection->prepare($query);
+        $statement->bindParam(1, $user_id, PDO::PARAM_INT);
+
+        if (!$statement->execute()) {
+            exit("Error: Could not get liked confessions");
+        }
+
+        $liked_confessions = $statement->fetchAll();
+        self::addConfessionsProperties($liked_confessions, $user_id, $connection);
+
+        echo json_encode($liked_confessions);
+    }
+
     public static function getConfession($connection) {
         session_start();
         $confession_id = $_SESSION["confession_id"];
@@ -185,5 +205,6 @@ class Confession {
             exit("Error: Could not delete confession");
         }
     }
+
 
 }

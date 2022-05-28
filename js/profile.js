@@ -51,6 +51,26 @@ main.addEventListener("click", event => {
             }
         });
     }
+});
 
+// profile stats options
+const confessionsCreated = document.querySelector("#profile-stats-options li:first-child");
+const confessionsLiked = document.querySelector("#profile-stats-options li:last-child");
 
+confessionsCreated.addEventListener("click", () => {
+    if (!confessionsCreated.classList.contains("active")) {
+        confessionsCreated.classList.add("active");
+        confessionsLiked.classList.remove("active");
+        confessionGallery.removeAll();
+        confessionGallery.displayAll("../php/get-user-confessions.php", false);
+    }
+});
+
+confessionsLiked.addEventListener("click", () => {
+    if (!confessionsLiked.classList.contains("active")) {
+        confessionsLiked.classList.add("active");
+        confessionsCreated.classList.remove("active");
+        confessionGallery.removeAll();
+        confessionGallery.displayAll("../php/get-liked-confessions.php", true);
+    }
 });

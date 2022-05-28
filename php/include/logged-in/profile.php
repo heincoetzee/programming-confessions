@@ -1,7 +1,7 @@
 <section id="profile-stats">
   <h3><?php echo $page_title ?></h3>
 
-  <ol>
+  <ol id="profile-stats-options">
     <li class="active">Confessions Created</li>
     <li>Confessions Liked</li>
   </ol>
