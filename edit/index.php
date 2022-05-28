@@ -5,7 +5,7 @@ require_once "../php/login-checker.php";
 $page_title = "Confess";
 $dir = "..";
 $stylesheet = "confess.css";
-$scripts = array("sign-out.js");
+$scripts = array("sign-out.js", "edit.js");
 $modules = array("toggle.js", "confession.js");
 $header_type = 2;
 

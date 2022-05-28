@@ -68,21 +68,31 @@ main {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  /* margin-top: auto; */
 }
-.update ol {
+.update {
   padding: 0;
 }
 .update li {
   padding: 5px 10px;
+  display: inline-block;
 }
 .update liver {
   cursor: pointer;
 }
 .update li:first-child {
+  padding: 0;
   margin-right: 13px;
 }
 .update li:last-child {
   background: var(--dark-red);
+}
+a {
+  font-size: 16px;
+  display: inline-block;
+}
+.like-counter {
+  margin-top: 0;
 }
 
 /* Indicates which profile Setting is selected */

@@ -10,7 +10,7 @@ main {
   padding: 35px 15px;
   display: flex;
   flex-flow: row wrap;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   column-gap: 3%;
   row-gap: 30px;
   height: auto;

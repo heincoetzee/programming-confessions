@@ -20,7 +20,9 @@
         </div>
 
         <ol class="update">
-          <li class="button">Edit</li>
+          <li>
+            <a href="../edit" class="button">Edit</a>
+          </li>
           <li class="button">Delete</li>
         </ol>
       </div>

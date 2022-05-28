@@ -13,7 +13,6 @@ class Confession {
         $this->connection = $connection;
     }
 
-
     public function create() {
         $query = "INSERT INTO confessions(title, body, user_id) VALUES(?, ?, ?)";
 
@@ -133,6 +132,41 @@ class Confession {
         self::addConfessionsProperties($confessions, $user_id, $connection);
 
         echo json_encode($confessions);
+    }
+
+    public static function getConfession($connection) {
+        session_start();
+        $confession_id = $_SESSION["confession_id"];
+
+        $query = "SELECT title, body FROM confessions WHERE confession_id=?";
+        $statement = $connection->prepare($query);
+        $statement->bindParam(1, $confession_id, PDO::PARAM_INT);
+
+        if (!$statement->execute()) {
+            exit("Error: Could not find confession");
+        }
+
+        $confession = $statement->fetch();
+
+        echo json_encode($confession);
+    }
+
+    public function updateConfession() {
+        session_start();
+        $confession_id = (int) htmlentities($_SESSION["confession_id"]);
+        $title = $this->title;
+        $body = $this->body;
+
+        $query = "UPDATE confessions SET title=?, body=? WHERE confession_id=?";
+        $statement = $this->connection->prepare($query);
+
+        $statement->bindParam(1, $title, PDO::PARAM_STR, 20);
+        $statement->bindParam(2, $body, PDO::PARAM_STR, 140);
+        $statement->bindParam(3, $confession_id, PDO::PARAM_INT);
+
+        if (!$statement->execute()) {
+            print_r($statement->errorInfo());
+        }
     }
 
 }
