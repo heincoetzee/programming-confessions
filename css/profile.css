@@ -50,7 +50,6 @@ main {
   flex: 0 0 70%;
   display: flex;
   flex-flow: row wrap;
-  align-items: flex-start;
   column-gap: 5%;
   row-gap: 30px;
   height: auto;
@@ -68,7 +67,7 @@ main {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  /* margin-top: auto; */
+  margin-top: auto;
 }
 .update {
   padding: 0;
