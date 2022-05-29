@@ -243,8 +243,15 @@ export default class SignUpForm {
     }
 
     #processRequest(url) {
-        this.#sendRequest(url).then(() => {
-            this.#reset();
+        this.#sendRequest(url).then((message) => {
+            if (message.includes("Duplicate entry")) {
+                this.#removeErrorMessages();
+                const usernameTakeMessage = "Username already taken. Please provide another";
+                this.#displayErrorMessage(usernameTakeMessage, this.#username);
+                this.#username.focus();
+            } else {
+                this.#reset();
+            }
         }).catch(error => {
             console.log(error);
         });

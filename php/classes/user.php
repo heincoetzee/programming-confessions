@@ -20,7 +20,7 @@ class User {
         $statement->bindParam(2, $password_hash, PDO::PARAM_STR, 255);
 
         if (!$statement->execute()) {
-            die("error");
+            print_r($statement->errorInfo());
         }
     }
     
