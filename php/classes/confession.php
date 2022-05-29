@@ -143,7 +143,9 @@ class Confession {
         $user_id = User::getUserId($connection);
 
         $query = "SELECT confession_id, title, body, date_created, user_id FROM 
-            confessions NATURAL JOIN likes WHERE user_id=? AND liked=1
+            confessions WHERE confession_id IN (
+                    SELECT confession_id FROM likes WHERE user_id=? and liked=1
+                )
             ORDER BY date_created DESC";
 
         $statement = $connection->prepare($query);
